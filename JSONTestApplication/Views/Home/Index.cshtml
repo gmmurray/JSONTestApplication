@@ -7,6 +7,7 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
+<button onclick="createTable()" class="btn btn-outline-primary">Create Table</button>
 
 <table id="employee-list">
     <thead>
@@ -20,15 +21,17 @@
 </table>
 <script src="/lib/jquery/dist/jquery.js"></script>
 <script>
-    $(function () {
-        $.get('Home/EmployeeDetails/').done(function (employees) {
-            $.each(employees, function (i, employee) {
-                var item = '<tr><td>' + employee.id + '</td><td>' +
-                    employee.name + '</td><td>' +
-                    employee.address + '</td><td>' +
-                    employee.city + '</td></tr>';
-                $('#employee-list').append(item);
-            })
+    function createTable() {
+        $(function () {
+            $.get('Home/EmployeeDetails/').done(function (employees) {
+                $.each(employees, function (i, employee) {
+                    var item = '<tr><td>' + employee.id + '</td><td>' +
+                        employee.name + '</td><td>' +
+                        employee.address + '</td><td>' +
+                        employee.city + '</td></tr>';
+                    $('#employee-list').append(item);
+                })
+            });
         });
-    });
+    }
 </script>
