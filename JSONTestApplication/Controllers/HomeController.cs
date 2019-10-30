@@ -19,12 +19,12 @@ namespace JSONTestApplication.Controllers
         [HttpGet]
         public JsonResult EmployeeDetails()
         {
-            // Create List of employees
+            // Create List
             List<Employee> Employees = new List<Employee>()
             {
-                new Employee {Id = 1, Name = "Greg", Address = "123 Road Rd", City = "Jacksonville"},
-                new Employee {Id = 2, Name = "Bill", Address = "321 Drive Dr", City = "Orange Park"},
-                new Employee {Id = 3, Name = "James", Address="456 Lane Ln", City = "Fleming Island"}
+                new Employee {Id = 1, Name = "Greg", Address = "123 Road Rd", City = "Jacksonville", Hours = 12},
+                new Employee {Id = 2, Name = "Bill", Address = "321 Drive Dr", City = "Orange Park", Hours = 27},
+                new Employee {Id = 3, Name = "James", Address="456 Lane Ln", City = "Fleming Island", Hours = 5}
             };
 
             // Return list as JSON

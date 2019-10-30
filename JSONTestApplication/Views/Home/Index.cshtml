@@ -6,7 +6,7 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
-
+<div id="myDiv" style="height:500px;width:500px"></div>
 <button onclick="createTable()" class="btn btn-outline-primary">Create Table</button>
 
 <table id="employee-list">
@@ -16,11 +16,13 @@
             <th>Name</th>
             <th>Address</th>
             <th>City</th>
+            <th>Hours</th>
         </tr>
     </thead>
 </table>
-<script src="/lib/jquery/dist/jquery.js"></script>
 <script>
+    
+
     function createTable() {
         $(function () {
             $.get('Home/EmployeeDetails/').done(function (employees) {
@@ -28,10 +30,20 @@
                     var item = '<tr><td>' + employee.id + '</td><td>' +
                         employee.name + '</td><td>' +
                         employee.address + '</td><td>' +
-                        employee.city + '</td></tr>';
+                        employee.city + '</td><td>' +
+                        employee.hours + '</td></tr > ';
                     $('#employee-list').append(item);
                 })
+
+                var data = [{
+                    x: [employees[0].name, employees[1].name, employees[2].name],
+                    y: [employees[0].hours, employees[1].hours, employees[2].hours],
+                    type: 'bar'
+                }];
+                Plotly.newPlot('myDiv', data);
             });
         });
     }
+
+    
 </script>
